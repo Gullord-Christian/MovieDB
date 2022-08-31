@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/flask_app/static/style.css">
+</head>
+<body style="background-color: rgb(255, 253, 253);">
+    <div class="container" style="margin-top: 80px; background-image: linear-gradient(to top, rgb(4, 158, 163), white); padding-bottom: 40px; border-radius: 15px;">
+        <div class="row">
+            <div class="d-flex-col text-center mt-3">
+                <h1 style="color: #6c757d; font-family:cursive; font-size:60px;">
+                    Pick that movie!
+                </h1>
+            </div>
+        </div> 
+        <div class="row">
+            <form method="POST" action="/user/new" class="col-6 d-flex-col align-items-center mt-5" >
+                <fieldset>
+                    <div>
+                        <label for="first_name">
+                            First name:
+                        </label>
+                        <input type="text" name="first_name" class="form-control"/>
+                        
+                        {% for message in get_flashed_messages( category_filter = ["error_register_first_name"] ): %}
+                        <p class="alert alert-danger">    
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <label for="last_name">
+                            Last name:
+                        </label>
+                        <input type="text" name="last_name" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_register_last_name"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <label for="email">
+                            Email:
+                        </label>
+                        <input type="text" name="email" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_register_email"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <label for="password">
+                            Password:
+                        </label>
+                        <input type="password" name="password" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_register_password"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <label for="password_confirmation">
+                            Password confirmation:
+                        </label>
+                        <input type="password" name="password_confirmation" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_register_password_confirmation"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-secondary mt-3" style="margin-bottom: 10px;">
+                        Register
+                    </button>
+                </fieldset>
+            </form>
+            <form method="POST" action="/login" class="col-6 d-flex-col align-items-center mt-5">
+                <fieldset>
+                    <div>
+                        <label for="email">
+                            Email:
+                        </label>
+                        <input type="text" id="email" name="email" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_email"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <label for="password">
+                            Password:
+                        </label>
+                        <input type="password" id="password" name="password" class="form-control"/>
+                        {% for message in get_flashed_messages( category_filter = ["error_password"] ): %}
+                        <p class="alert alert-danger"> 
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-secondary mt-3">
+                        Login
+                    </button>
+                    <div>
+                        {% for message in get_flashed_messages( category_filter = ["error_login"] ): %}
+                        <p class="alert alert-danger">
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

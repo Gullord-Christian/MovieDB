@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Sighting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div
+        class="bg-image"
+        style="width: 100%; height: 1080px; margin-top: 20px;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center";>
+            <div class="navbarleft">
+                <h1>Pick that movie!</h1>
+                <h4>Welcome {{session.first_name}}!</h4>
+            </div>
+            <div class="navbarright" style="display: flex; justify-content: space-evenly; width: 400px">
+                <a href="/dashboard">
+                    <button class="btn btn-success">Dashboard</button>
+                </a>
+                </form>
+                <form action="/new/movie">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="margin-right: 5px"
+                        >
+                        Add new movie
+                        </button>
+                    </form>
+                    <form action="/logout" method="POST">
+                    <button class="btn btn-danger" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="containerleft">
+                <h3>Edit movie review</h3>
+                <form action="/edit/movie/{{movies.id}}" method="POST" >
+                    <div class="form-group">
+                        <label for="title">
+                            Title:
+                        </label>
+                        <input type="text" id="title" name="title"  value="{{movies.title}}" class="form-control" />
+                        {% for message in get_flashed_messages(category_filter = ['error_title']) %}
+                        <p class="alert alert-danger">    
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="year">
+                            Year: 
+                        </label>
+                        <input type="number" id="year" name="year" value="{{movies.year}}" class="form-control">
+                        {% for message in get_flashed_messages(category_filter = ['error_year']) %}
+                        <p class="alert alert-danger">    
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">
+                            Chose a genre
+                        </label>
+                        <select name="genre" id="genre" class="form-control" value="{{movies.genre}}">
+                            <option value="select"></option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Action">Action</option>
+                            <option value="Science_Fiction">Science Fiction</option>
+                            <option value="Documentary">Documentary</option>
+                        </select>
+                        {% for message in get_flashed_messages(category_filter = ['error_genre']) %}
+                        <p class="alert alert-danger">    
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">
+                            Rating (1 - 5 stars)
+                        </label>
+                        <select name="rating" id="rating" class="form-control" value="{{movies.rating}}">
+                            <option value="select"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3 </option>
+                            <option value="4">4 </option>
+                            <option value="5">5 </option>
+                        </select>
+                        {% for message in get_flashed_messages(category_filter = ['error_rating']) %}
+                        <p class="alert alert-danger">    
+                            {{ message }}
+                        </p>
+                        {% endfor %}
+                    </div>
+            </div>
+            <br>
+            <div class="form-group form-control">
+                <label for="review" >Review</label>
+                <textarea id="review" name="review" rows="6"class="form-control" value="{{movies.review}}">
+                    {% for message in get_flashed_messages(category_filter = ['error_review']) %}
+                    <p class="alert alert-danger">    
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </textarea>
+                    <br>
+                <label for="you_should_watch">Should I watch?</label>
+                <textarea id="you_should_watch" name="you_should_watch" rows="2" class="form-control" value="{{movies.you_should_watch}}">
+                    {% for message in get_flashed_messages(category_filter = ['error_you_should_watch']) %}
+                    <p class="alert alert-danger">    
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                </textarea>
+                    <br>
+                    </div>
+                        <div>
+                            <br>
+                            <button class="btn btn-info" type="submit">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+</body>
+</html>
