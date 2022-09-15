@@ -1,0 +1,183 @@
+* {
+	font-family: "Quicksand", sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.spacer {
+	aspect-ratio: 960/300;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.layer1 {
+	background-image: url("../images/blob-scene-haikei.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+}
+
+.register-container {
+	height: 400px;
+	width: 500px;
+	background-color: transparent;
+	margin: 50px auto;
+	position: absolute;
+	left: 27%;
+	top: 17%;
+}
+
+.register-title > h1 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 50px;
+	color: #fffff0;
+	text-shadow: 1.5px 0px 0px gray;
+}
+.register-title > p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	margin-top: -15px;
+	color: #fffff0;
+	text-shadow: 1.5px 0px 0px gray;
+}
+
+#register-form {
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	position: relative;
+}
+
+.user-reg-btn {
+	height: 30px;
+	width: 40%;
+	margin: 35px auto;
+	border-radius: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 1px;
+	background-color: #fffff0;
+}
+.user-reg-btn:hover {
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	border-style: inset;
+}
+
+.input-div {
+	height: 25px;
+	width: 60%;
+	margin: 0 auto 13px auto;
+	border-radius: 15px;
+	background-color: #fffff0;
+	font-size: 20px;
+	padding-left: 2px;
+}
+
+.label-div {
+	height: 20px;
+	color: #fffff0;
+	margin-left: 100px;
+	font-size: 1rem;
+	text-shadow: 1px 0px 0px gray;
+	margin-bottom: 7px;
+	letter-spacing: 0.25px;
+}
+
+.image {
+	height: 300px;
+	margin-left: 700px;
+	margin-top: 400px;
+}
+
+.film-image {
+	height: 200px;
+	margin-top: -130px;
+	position: fixed;
+	margin-left: 20px;
+}
+
+.back-login {
+	position: fixed;
+	right: 0;
+	top: 0;
+	text-align: center;
+	margin-right: 30px;
+	color: #fffff0;
+	font-weight: bold;
+}
+.back-login-btn {
+	height: 30px;
+	width: 100px;
+	background-color: #fffff0;
+	border-radius: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.back-login-btn:hover {
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	height: 40px;
+}
+
+.first-name-alert {
+	color: red;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 25%;
+	top: 8%;
+	bottom: 1;
+	font-weight: bold;
+}
+
+.last-name-alert {
+	color: red;
+	position: absolute;
+	font-size: 12px;
+	left: 25%;
+	top: 21%;
+	bottom: 1;
+}
+
+.email-alert {
+	color: red;
+	position: absolute;
+	font-size: 12px;
+	left: 25%;
+	top: 36.5%;
+	bottom: 1;
+}
+
+.password-alert {
+	color: red;
+	position: absolute;
+	font-size: 12px;
+	left: 25%;
+	top: 52%;
+	bottom: 1;
+}
+
+.confirm-password-alert {
+	color: red;
+	position: absolute;
+	font-size: 12px;
+	left: 25%;
+	top: 67.5%;
+	bottom: 1;
+}

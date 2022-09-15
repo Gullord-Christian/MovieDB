@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Registration</title>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{url_for('static', filename='/css/register.css')}}" />
+	</head>
+	<body>
+		<div class="spacer layer1">
+			<div class="register-title">
+				<h1>Pick That Movie</h1>
+				<p>We are happy to see you</p>
+			</div>
+			<div class="back-login">
+				<p>Already have an account?</p>
+				<a href="/"><button class="back-login-btn">Login</button></a>
+			</div>
+			<img
+				class="film-image"
+				src="{{url_for('static', filename='/images/cinema.png')}}" />
+			<div class="register-container" id="register-container">
+				<form method="POST" action="/user/new" id="register-form">
+					<label class="label-div" for="first_name">First Name</label>
+					<input class="input-div" name="first_name" type="text" />
+					{% for message in get_flashed_messages( category_filter =
+					["error_register_first_name"] ): %}
+					<p class="first-name-alert">{{ message }}</p>
+					{% endfor %}
+
+					<label class="label-div" for="last_name">Last Name</label>
+					<input type="text" name="last_name" class="input-div" />
+					{% for message in get_flashed_messages( category_filter =
+					["error_register_last_name"] ): %}
+					<p class="last-name-alert">{{ message }}</p>
+					{% endfor %}
+
+					<label for="email" class="label-div">Email</label>
+					<input type="email" name="email" class="input-div" />
+					{% for message in get_flashed_messages( category_filter =
+					["error_register_email"] ): %}
+					<p class="email-alert">{{ message }}</p>
+					{% endfor %}
+
+					<label for="password" class="label-div">Password</label>
+					<input type="password" name="password" class="input-div" />
+					{% for message in get_flashed_messages( category_filter =
+					["error_register_password"] ): %}
+					<p class="password-alert">{{ message }}</p>
+					{% endfor %}
+
+					<label for="password_confirmation" class="label-div"
+						>Password Confirmation</label
+					>
+					<input
+						type="password"
+						name="password_confirmation"
+						class="input-div" />
+					{% for message in get_flashed_messages( category_filter =
+					["error_register_password_confirmation"] ): %}
+					<p class="confirm-password-alert">{{ message }}</p>
+					{% endfor %}
+
+					<button type="submit" class="user-reg-btn">Register</button>
+				</form>
+			</div>
+			<img
+				class="image"
+				src="{{url_for('static', filename='/images/undraw_home_cinema_l7yl.svg')}}" />
+		</div>
+	</body>
+</html>

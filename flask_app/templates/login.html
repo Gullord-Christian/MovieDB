@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{url_for('static',
+		filename='/css/login.css')}}" />
+		<script
+			src="https://kit.fontawesome.com/ce7aa84242.js"
+			crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="" />
+		<title>Login</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="app-title">Pick That Movie</h1>
+			<div class="register-btn-container">
+				<p class="app-register-text">First Time Here?</p>
+				<a href="/register"
+					><button class="register-btn" id="toggle-btn">
+						Register here
+					</button></a
+				>
+				<img
+					class="index-image"
+					src="{{url_for('static', filename='/images/horror_movie.svg')}}"
+					alt="horror-movie" />
+			</div>
+		</div>
+		<div class="spacer layer1"></div>
+		<div class="login-container">
+			<form action="/login" method="POST">
+				<img
+					class="avatar"
+					src="{{url_for('static', filename='/images/color-film-reel.png')}}"
+					alt="login-avatar" />
+				<h2 style="margin-left: 35px">Welcome Back</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div>
+						<h5>Email</h5>
+						<label for="email"></label>
+						<input type="text" class="input" name="email" id="email" />
+						{% for message in get_flashed_messages( category_filter =
+						["error_email"] ): %}
+						<p class="alert-login">{{ message }}</p>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="input-div two">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div>
+						<h5>Password</h5>
+						<label for="password"></label>
+						<input
+							type="password"
+							class="input"
+							name="password"
+							id="password" />
+						{% for message in get_flashed_messages( category_filter =
+						["error_password"] ): %}
+						<p class="alert-login">{{ message }}</p>
+						{% endfor %}
+					</div>
+				</div>
+				<button type="submit" class="login-btn">Login</button>
+				<div class="alert-container">
+					{% for message in get_flashed_messages( category_filter =
+					["error_login"] ): %}
+					<p class="alert-login">{{ message }}</p>
+					{% endfor %}
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

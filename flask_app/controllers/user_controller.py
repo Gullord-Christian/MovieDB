@@ -12,7 +12,14 @@ def index():
     if User.validate_session():
         return redirect ("/dashboard")
     else:
-        return render_template("index.html")
+        return render_template("login.html")
+    
+@app.route('/register')
+def register():
+    if User.validate_session():
+        return redirect ("/dashboard")
+    else:
+        return render_template("register.html")
 
 @app.route("/user/new", methods=["POST"])
 def create_user():
@@ -38,10 +45,10 @@ def create_user():
 
         else:
             flash("That email already exists.", "error_register_email")
-            return redirect("/")
+            return redirect("/register")
 
     else:
-        return redirect("/")
+        return redirect("/register")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -51,11 +58,11 @@ def login():
     result = User.get_one_by_email(data)
 
     if result == None:
-        flash ("Must provide email and password.", "error_login")
+        flash ("Account not found in our system", "error_login")
         return redirect("/")
     else:
         if not bcrypt.check_password_hash(result.password, request.form['password']):
-            flash("Password does not match.", "error_login")
+            flash("Password invalid.", "error_login")
             return redirect("/")
         else:
             session['email'] = result.email

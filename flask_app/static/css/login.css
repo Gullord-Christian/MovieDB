@@ -1,0 +1,199 @@
+body {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	background: #d7dde2;
+	overflow-y: hidden;
+	font-family: "Quicksand", sans-serif;
+}
+
+.container {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+}
+
+.login-container {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin-top: 150px;
+	margin-right: 200px;
+	display: flex;
+}
+
+.avatar {
+	height: 200px;
+	width: 200px;
+	margin-left: 30px;
+	border-radius: 15px;
+}
+
+.app-title {
+	font-size: 60px;
+	text-align: center;
+	color: #333;
+	text-shadow: 2px 0px 0px #6089af;
+	font-weight: bold;
+}
+
+.app-register-text {
+	font-weight: bold;
+	font-size: 20px;
+	color: #333;
+	text-shadow: 1px 0px 0px rgb(75, 74, 74);
+}
+
+.register-btn-container {
+	margin-left: 120px;
+}
+
+.register-container {
+	height: 500px;
+	background-color: gray;
+}
+
+.register-btn {
+	border: 1px solid #333;
+	height: 30px;
+	width: 140px;
+	background: none;
+	border-radius: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	border: none;
+	background-color: whitesmoke;
+}
+
+.register-btn:hover {
+	background: linear-gradient(#6089af, #758492);
+	color: white;
+}
+
+.register-btn:active {
+	background-color: #6d57f2;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+.spacer {
+	aspect-ratio: 960/300;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: fixed;
+	bottom: 0;
+	max-height: 40%;
+}
+
+.layer1 {
+	background-image: url("../images/layered-waves.svg");
+	max-height: 30%;
+	height: 800px;
+}
+
+.index-image {
+	height: 300px;
+	position: absolute;
+	left: 10%;
+	top: 250px;
+}
+
+.i {
+	border-radius: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.i i {
+	color: #6c63ff;
+	margin-bottom: 12px;
+}
+
+.form {
+	width: 360px;
+}
+
+.form > h2 {
+	margin-left: 25px;
+}
+
+.input-div {
+	display: grid;
+	grid-template-columns: 7% 93%;
+	margin: 25px 0;
+	padding: 5px 0;
+	border-bottom: 2px solid #d9d9d9;
+}
+
+.input-div > div {
+	position: relative;
+	height: 45px;
+}
+
+.input-div > div h5 {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #333;
+	font-size: 15px;
+}
+
+.input-div.one {
+	margin-top: 0;
+}
+
+.input-div.two {
+	margin-bottom: 4px;
+}
+
+.input {
+	position: absolute;
+	width: 85%;
+	height: 30%;
+	border-radius: 20px;
+	margin-left: 8px;
+	top: 0;
+	left: 0;
+	border: none;
+	outline: none;
+	background: whitesmoke;
+	padding: 0.5rem 0.7rem;
+	font-size: 1rem;
+}
+
+.login-btn {
+	height: 30px;
+	border-radius: 30px;
+	text-align: center;
+	border: none;
+	margin-left: 25px;
+	margin-top: 20px;
+	text-align: center;
+	width: 85%;
+	transition: all 0.3s;
+	font-weight: bold;
+	letter-spacing: 1px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.login-btn:hover {
+	background: linear-gradient(#6089af, #758492);
+	color: white;
+}
+
+.login-btn:active {
+	background-color: #6d57f2;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+.alert-login {
+	color: red;
+	margin-left: 30px;
+}

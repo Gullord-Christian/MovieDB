@@ -3,7 +3,7 @@ from flask_app import app
 from flask_app.models.movie_model import Movie
 from flask_app.models.user_model import User
 
-@app.route ("/dashboard")
+@app.route ("/dashboard/")
 def get_movies():
     if User.validate_session():
         movies = Movie.get_all()
@@ -26,9 +26,10 @@ def create_movie():
         "title" : request.form['title'],
         "genre" : request.form['genre'],
         "year" : request.form['year'],
-        "review" : request.form['review'],
+        "review" : request.form['review'], 
         "you_should_watch" : request.form['you_should_watch'],
         "rating" : request.form['rating'],
+        "trailer" : request.form['trailer'],
         "user_id" : session['user_id'],
     }
     Movie.create(data)
@@ -74,6 +75,7 @@ def edit_movie (id):
         'year' : request.form['year'],
         "review" : request.form['review'],
         "you_should_watch" : request.form['you_should_watch'],
+        "trailer" : request.form['trailer'],
         "rating" : request.form['rating'],
         }
         Movie.update_one(data)

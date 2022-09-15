@@ -47,7 +47,7 @@ class User:
 
     @classmethod
     def get_one_with_movies(cls, data):
-        query = "SELECT * FROM users JOIN movies ON users.id = moviess.user_id WHERE users.id = %(id)s;"
+        query = "SELECT * FROM users JOIN movies ON users.id = movies.user_id WHERE users.id = %(id)s;"
 
         result = connectToMySQL(DATABASE).query_db(query, data)
 
@@ -90,32 +90,32 @@ class User:
         isValid = True
 
         if not EMAIL_REGEX.match(data['email']):
-            flash("Email is invalid.", "error_register_email")
+            flash("Please enter a valid email address", "error_register_email")
             isValid = False
 
         if len(data['first_name']) < 2:
             isValid = False
-            flash("Please provide your first name. Must be at least 3 characters", "error_register_first_name") 
+            flash("First Name should be at least 3 characters", "error_register_first_name") 
         
         if len(data['last_name']) < 2:
             isValid = False
-            flash("Please provide your last name. Must be at least 3 characters", "error_register_last_name") 
+            flash("Last Name should be at least 3 characters", "error_register_last_name") 
 
-        if data['email'] == "":
-            isValid = False
-            flash("Please provide your email.", "error_register_email")
+        # if data['email'] == "":
+        #     isValid = False
+        #     flash("Please provide your email.", "error_register_email")
     
-        if data['password'] == "":
+        if len(data['password']) < 8:
             isValid = False
-            flash("Please provide a password, must be at least 8 characters.", "error_register_password")
+            flash("Password should be at least 8 characters", "error_register_password")
 
         if data['password_confirmation'] == "":
             isValid = False
-            flash("Please provide a password confirmation.", "error_register_password_confirmation")
+            flash("Please provide a password confirmation", "error_register_password_confirmation")
 
         if data['password'] != data['password_confirmation']:
             isValid = False
-            flash("Your passwords do not match.", "error_register_password_confirmation")
+            flash("Your passwords do not match", "error_register_password_confirmation")
 
         return isValid
     

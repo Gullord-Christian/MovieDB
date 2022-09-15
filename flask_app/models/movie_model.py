@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
 from flask import flash, session
 from flask_app.models import user_model
+import math
 
 class Movie: 
     def __init__ (self, data):
@@ -14,17 +15,18 @@ class Movie:
         self.rating = data['rating']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.trailer = data['trailer']
 
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO movies(title, genre, year, review, you_should_watch, rating, user_id)"
-        query += "VALUES (%(title)s, %(genre)s, %(year)s, %(review)s, %(you_should_watch)s, %(rating)s, %(user_id)s);"
+        query = "INSERT INTO movies(title, genre, year, review, you_should_watch, rating, user_id, trailer)"
+        query += "VALUES (%(title)s, %(genre)s, %(year)s, %(review)s, %(you_should_watch)s, %(rating)s, %(user_id)s, %(trailer)s);"
 
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM movies JOIN users ON users.id = movies.user_id;"
+        query = "SELECT * FROM movies JOIN users on users.id = movies.user_id order by movies.created_at DESC;"
 
         result = connectToMySQL(DATABASE).query_db(query)
         movies = []
@@ -77,7 +79,8 @@ class Movie:
 
     @classmethod
     def update_one (cls, data):
-        query = "UPDATE movies SET title = %(title)s, genre = %(genre)s, year = %(year)s, review = %(review)s, you_should_watch = %(you_should_watch)s, rating = %(rating)s WHERE id = %(id)s;"
+        query = "UPDATE movies SET title = %(title)s, genre = %(genre)s, year = %(year)s, review = %(review)s, "
+        query+= "you_should_watch = %(you_should_watch)s, rating = %(rating)s, trailer = %(trailer)s WHERE id = %(id)s;"
 
         return connectToMySQL(DATABASE).query_db(query,data)
 
@@ -98,26 +101,26 @@ class Movie:
 
         if data['title']  == "":
             isValid = False
-            flash("Title must be submitted", "error_title") 
+            flash("Please select title.", "error_title") 
         
         if data['genre'] == "":
             isValid = False
-            flash("Must select genre", "error_genre") 
+            flash("Please select genre.", "error_genre") 
 
         if data['year'] == "":
             isValid = False
-            flash("Must provide a year.", "error_year")
+            flash("Please select year.", "error_year")
 
-        if len(data['review']) < 10:
+        if len(data['review']) < 5:
             isValid = False
-            flash("Review must be at least 10 characters.", "error_review")
+            flash("Review should be at least 5 characters.", "error_review")
 
-        if len(data['you_should_watch']) < 10:
+        if len(data['you_should_watch']) < 2:
             isValid = False
-            flash("This must be at least 10 characters", "error_you_should_watch") 
+            flash("Suggestion should be at least 2 characters.", "error_you_should_watch") 
 
-        if data['rating'] == "":
+        if not (data['rating']).isdigit():
             isValid = False
-            flash("You must provide a rating.")
+            flash("Please provide a rating.", "error_rating")
 
         return isValid
