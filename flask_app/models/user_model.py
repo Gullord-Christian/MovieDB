@@ -84,7 +84,12 @@ class User:
             isValid = False
         return isValid
 
-
+    @classmethod
+    def add_favorites(cls, data):
+        query = "INSERT INTO favorites (user_id,movie_id) VALUES (%(user_id)s,%(movie_id)s);"
+        return connectToMySQL(DATABASE).query_db(query,data)
+        
+        
     @staticmethod
     def validate_register(data):
         isValid = True

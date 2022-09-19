@@ -20,7 +20,7 @@ body {
 }
 
 .dashboard-table thead tr {
-	background-color: #0e8f75;
+	background-color: rgb(78, 119, 153);
 	color: #ffffff;
 	text-align: center;
 	font-weight: 500;
@@ -41,7 +41,7 @@ body {
 }
 
 .dashboard-table tbody:last-of-type {
-	border-bottom: 2px solid #0e8f75;
+	border-bottom: 2px solid steelblue;
 }
 
 /* .dashboard-table tbody tr.active-row {
@@ -132,9 +132,11 @@ body {
 }
 
 .movie-image {
-	height: 135px;
+	height: 200px;
 	border-radius: 10px;
+	width: 200px;
 	margin-top: 2px;
+	margin-right: 40px;
 }
 
 .divider {
@@ -193,4 +195,25 @@ a:visited {
 .review-divider {
 	margin: 10px;
 	width: 70%;
+}
+
+.pager-nav {
+	margin: 16px 12px;
+	float: right;
+}
+.pager-nav span {
+	display: inline-block;
+	padding: 4px 8px;
+	margin: 1px;
+	cursor: pointer;
+	font-size: 14px;
+	background-color: #ffffff;
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.pager-nav span:hover,
+.pager-nav .pg-selected {
+	background-color: #f9f9f9;
+	border: 2px solid #cccccc;
 }

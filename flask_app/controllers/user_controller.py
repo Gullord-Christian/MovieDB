@@ -75,3 +75,12 @@ def login():
 def logout():
     session.clear()
     return redirect("/")
+
+@app.route("/join/movie", methods=['POST'])
+def join_movie():
+    data = {
+        'user_id': request.form['user_id'],
+        'movie_id': request.form['movie_id']
+    }
+    User.add_favorite(data)
+    return redirect(f"/user/{request.form['user_id']}")

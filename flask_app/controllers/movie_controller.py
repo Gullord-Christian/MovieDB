@@ -3,7 +3,9 @@ from flask_app import app
 from flask_app.models.movie_model import Movie
 from flask_app.models.user_model import User
 
-@app.route ("/dashboard/")
+
+
+@app.route ("/dashboard")
 def get_movies():
     if User.validate_session():
         movies = Movie.get_all()
@@ -83,7 +85,11 @@ def edit_movie (id):
     else:
         return redirect(f"/edit/movie/{id}")
 
-# @app.route ("/compare/movies/<int:id>")
-# def compare_movies(id):
-#     return render_template("compare_movies.html")
-
+@app.route("/join/user", methods=['POST'])
+def join_user():
+    data = {
+        'user_id': request.form['user_id'],
+        'movie_id': request.form['movie_id']
+    }
+    User.add_favorite(data)
+    return redirect(f"/movies/{request.form['movie_id']}")

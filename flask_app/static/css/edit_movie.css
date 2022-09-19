@@ -84,9 +84,11 @@ body {
 }
 
 .movie-image {
-	height: 135px;
+	height: 200px;
 	border-radius: 10px;
+	width: 200px;
 	margin-top: 2px;
+	margin-right: 40px;
 }
 
 .divider {
